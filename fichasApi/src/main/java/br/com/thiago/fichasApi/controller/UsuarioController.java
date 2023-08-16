@@ -17,6 +17,7 @@ public class UsuarioController {
     @Autowired
     public UsuarioService usuarioService;
 
+    @CrossOrigin(origins="*")
     @PostMapping("/usuario")
     public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody @Valid CadastrarUsuarioDTO data, UriComponentsBuilder uriBuilder){
         var newUsuario = new Usuario(data);

@@ -19,6 +19,7 @@ public class AutenticacaoController {
     private AuthenticationManager manager;
     @Autowired
     private TokenService tokenService;
+    @CrossOrigin(origins="*")
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacao dados) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
