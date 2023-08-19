@@ -33,7 +33,7 @@ export default function Login() {
     const getUsers = () => {
         axios.get(baseUrl + '/usuario/all', {
             headers: {
-                Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdHJpbmciLCJpc3MiOiJGaWNoYXMgQXBpIiwiZXhwIjoxNjkyMzk2NTk2fQ.feIqKpoltXw1qo2NxeWKp8PXjgMWsViIOAazC-iALDk`
+                Authorization: `eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2dpbiIsImlzcyI6IkZpY2hhcyBBcGkiLCJleHAiOjE2OTIzOTkyOTh9.IUsUYacgEom7P-8vaCm3EXtkf9Figh4Q-Iok_kmYjRE`
             }
         })
             .then(function (response) {

@@ -34,6 +34,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/usuario/all")
+    @CrossOrigin(origins="*")
     public ResponseEntity<List<Usuario>> getAllUsuarios(){
         List<Usuario> usuarios = usuarioService.getAll();
         return ResponseEntity.ok(usuarios);

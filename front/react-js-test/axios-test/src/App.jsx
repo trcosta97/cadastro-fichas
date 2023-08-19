@@ -5,6 +5,9 @@ import axios from 'axios';
 function App() {
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
+  const [token, setToken] = useState('')
+  
+
 
   const handleLogin = async () => {
     try {
@@ -14,15 +17,38 @@ function App() {
       });
 
       if (response.status == 200) {
-        const token = response.data.token;
-        alert('Sucesso')
-        console.log(token)
+        const authToken = response.data.token;
+        setToken(authToken);
+        localStorage.setItem('authToken', authToken);
+        console.log(response);
       }
     } catch (error) {
       alert( )
       console.log("Erro", JSON.stringify(error))
     }
   };
+
+  const handleGetAll = () => {
+    const storedToken = localStorage.getItem('authToken');    
+    
+    axios.get('http://localhost:8080/usuario/all', {
+            headers: {
+                Authorization: storedToken
+            }
+        })
+            .then(function (response) {
+                alert(sucesso)
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(JSON.stringify(error))
+                if (error.response) {
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                }
+            });
+    };
 
   return (
     <>
@@ -47,6 +73,7 @@ function App() {
           />
         </div>
         <button onClick={handleLogin}>Entrar</button>
+        <button onClick={handleGetAll}>Get</button>
       </div>
     </>
   );
