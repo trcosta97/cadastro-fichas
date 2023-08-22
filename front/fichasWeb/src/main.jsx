@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
+import CadastroFicha from './routes/CadastroFicha.jsx'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorPage from './routes/ErrorPage.jsx'
 import Login from './routes/Login.jsx'
+
+
 
 
 const router = createBrowserRouter([
@@ -13,6 +15,11 @@ const router = createBrowserRouter([
     element: <Login />,
     errorElement: <ErrorPage />,
   },
+  {
+    path: "/cadastroFicha",
+    element: <CadastroFicha />,
+    errorElement: <ErrorPage />,
+  }
 ]);
 
 

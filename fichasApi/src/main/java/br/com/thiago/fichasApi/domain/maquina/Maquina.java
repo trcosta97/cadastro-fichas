@@ -1,7 +1,6 @@
 package br.com.thiago.fichasApi.domain.maquina;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -34,7 +33,7 @@ public class Maquina {
         this.status = true;
     }
 
-    public Maquina(CadastrarMaquinaDTO data) {
+    public Maquina(DadosCadastroMaquina data) {
         this.setor = data.setor();
         this.nome = data.nome();
     }

@@ -7,6 +7,7 @@ import br.com.thiago.fichasApi.domain.usuario.Usuario;
 import br.com.thiago.fichasApi.service.FichaService;
 import br.com.thiago.fichasApi.service.MaquinaService;
 import br.com.thiago.fichasApi.service.UsuarioService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
+@SecurityRequirement(name="bearer-key")
 public class FichaController {
 
     @Autowired
@@ -29,6 +31,7 @@ public class FichaController {
 
 
     @PostMapping("/ficha")
+
     public ResponseEntity<Ficha> cadastrarFicha(@RequestBody @Valid CadastrarFichaDTO data, UriComponentsBuilder uriBuilder){
         var newFicha = new Ficha(data);
         Usuario usuario = usuarioService.getById(data.autor().id());

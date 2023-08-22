@@ -10,8 +10,6 @@ public record CadastrarFichaDTO(
         @NotNull
         @Valid
         DadosAutorCadastrarFicha autor,
-        @NotBlank
-        String nome,
         @NotNull
         @Valid
         DadosMaquinaCadastroFicha maquina,
