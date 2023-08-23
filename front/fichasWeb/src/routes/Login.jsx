@@ -1,9 +1,11 @@
 import { useState } from "react"
-import { Container,   LoginForm,
+import {
+  Container, LoginForm,
   Title,
   Label,
   Input,
-  Button } from "../styled/LoginPageStyle";
+  Button
+} from "../styled/LoginPageStyle";
 import axios from 'axios';
 
 
@@ -26,12 +28,12 @@ export default function Login() {
 
     try {
       const response = await axios.post(url, requestData);
-      
+
       const token = response.data.token;
       localStorage.setItem('token', token);
       console.log('Token:', token);
       alert("Login realizado com sucesso")
-      
+
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);
 
