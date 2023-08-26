@@ -8,15 +8,18 @@ import {
     Input,
     TextArea,
     Dropdown,
-    Button
+    Button,
+    ButtonBack
 } from '../styled/CadastroFichaStyle';
+import { useNavigate } from 'react-router-dom';
 
 export default function CadastroFicha() {
     const [idAutor, setIdAutor] = useState('');
     const [idMaquina, setIdMaquina] = useState('');
     const [aprovado, setAprovado] = useState(true);
     const [comentario, setComentario] = useState('');
-    
+    const navigate = useNavigate();
+
     const handleCadastroFicha = async (event) => {
         event.preventDefault();
       
@@ -84,6 +87,7 @@ export default function CadastroFicha() {
                 />
                 <Button onClick={handleCadastroFicha}>Cadastrar</Button>
             </FormWrapper>
+            <ButtonBack onClick={() => navigate('/')}>Voltar</ButtonBack>
         </Container>
     );
 }

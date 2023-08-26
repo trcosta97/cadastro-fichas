@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -70,6 +71,24 @@ export const Button = styled.button`
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`
+export const ButtonBack = styled.button`
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  bottom: 0; 
+  left: 0;   
 
   &:hover {
     background-color: #0056b3;

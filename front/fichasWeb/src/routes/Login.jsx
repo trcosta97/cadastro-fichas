@@ -7,10 +7,11 @@ import {
   Button
 } from "../styled/LoginPageStyle";
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Login() {
-
+  const navigate = useNavigate();
 
 
   const [login, setLogin] = useState('');
@@ -33,6 +34,7 @@ export default function Login() {
       localStorage.setItem('token', token);
       console.log('Token:', token);
       alert("Login realizado com sucesso")
+      
 
     } catch (error) {
       console.error('Erro ao fazer login:', error.message);

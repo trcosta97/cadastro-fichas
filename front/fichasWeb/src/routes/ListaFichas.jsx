@@ -10,10 +10,12 @@ import {
     LoadingText,
     AprovadoBadge
   } from '../styled/ListaFichasStyle'
+  import { useNavigate } from 'react-router-dom';
+  import { ButtonBack } from '../styled/CadastroFichaStyle';
 
 
 export default function ListaFichas() {
-  
+    const navigate = useNavigate();
     const [fichas, setFichas] = useState([])
 
     const getFichas = async() =>{
@@ -70,6 +72,7 @@ export default function ListaFichas() {
               </FichaWrapper>
             ))
           )}
+          <ButtonBack onClick={() => navigate('/')}>Voltar</ButtonBack>
         </Container>
       );
     }

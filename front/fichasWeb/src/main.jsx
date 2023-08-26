@@ -28,7 +28,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path:"lista",
+    path:"/lista",
     element: <ListaFichas/>,
     errorElement: <ErrorPage/>
   }
