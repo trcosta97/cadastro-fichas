@@ -69,13 +69,15 @@ public class UsuarioService {
         return null;
     }
 
-    public void delete(Long id){
+    public Usuario delete(Long id){
         Optional<Usuario> optionalUsuario = usuarioRepository.findByIdAndStatusTrue(id);
         if (optionalUsuario.isPresent()){
             Usuario usuario = optionalUsuario.get();
             usuario.setStatus(false);
             usuarioRepository.save(usuario);
+            return usuario;
         }
+        return null;
     }
 
 

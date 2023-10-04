@@ -33,12 +33,28 @@ public class FichaService {
         return fichaRepository.findAllByStatusTrue();
     }
 
-    public void delete(Long id){
+    public Ficha update(Long id, Ficha ficha){
+        Optional<Ficha> optionalFicha = fichaRepository.getReferenceByIdAndStatusTrue(id);
+        if(optionalFicha.isPresent()){
+            Ficha updatedFicha = optionalFicha.get();
+            if(ficha.getComentarios() != null){
+                updatedFicha.setComentarios(ficha.getComentarios());
+            }
+            fichaRepository.save(updatedFicha);
+            return updatedFicha;
+        }
+        return null;
+    }
+
+    public Ficha delete(Long id){
         Optional<Ficha> optionalFicha = fichaRepository.findByIdAndStatusTrue(id);
         if (optionalFicha.isPresent()){
             Ficha ficha = optionalFicha.get();
             ficha.setStatus(false);
             fichaRepository.save(ficha);
+            return ficha;
         }
+        return null;
+
     }
 }

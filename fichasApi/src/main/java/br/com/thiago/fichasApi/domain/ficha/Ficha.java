@@ -44,6 +44,10 @@ public class Ficha {
         this.maquina = new Maquina(data.maquina());
     }
 
+    public Ficha(AtualizarFichaDTO data) {
+        this.comentarios = data.comenatarios();
+    }
+
 
     @PrePersist
     public void prePersist(){

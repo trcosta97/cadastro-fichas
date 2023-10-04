@@ -48,6 +48,13 @@ public class Usuario implements UserDetails {
         this.id = data.id();
     }
 
+    public Usuario(AtualizarUsuarioDTO data) {
+        this.nome = data.nome();
+        this.senha = data.senha();
+        this.login = data.login();
+
+    }
+
     @PrePersist
     public void prePersist(){
         this.dataCadastro = LocalDateTime.now();

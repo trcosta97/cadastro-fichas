@@ -12,4 +12,6 @@ public interface FichaRepository extends JpaRepository<Ficha, Long> {
     List<Ficha> findAllByStatusTrue();
 
     List<Ficha> findAllByAutor(Usuario usuario);
+
+    Optional<Ficha> getReferenceByIdAndStatusTrue(Long id);
 }

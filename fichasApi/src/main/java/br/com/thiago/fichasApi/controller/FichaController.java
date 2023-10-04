@@ -1,5 +1,6 @@
 package br.com.thiago.fichasApi.controller;
 
+import br.com.thiago.fichasApi.domain.ficha.AtualizarFichaDTO;
 import br.com.thiago.fichasApi.domain.ficha.CadastrarFichaDTO;
 import br.com.thiago.fichasApi.domain.ficha.Ficha;
 import br.com.thiago.fichasApi.domain.maquina.Maquina;
@@ -17,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.util.List;
 
 @RestController
+@RequestMapping("ficha")
 @SecurityRequirement(name="bearer-key")
 public class FichaController {
 
@@ -30,8 +32,7 @@ public class FichaController {
     private UsuarioService usuarioService;
 
 
-    @PostMapping("/ficha")
-
+    @PostMapping()
     public ResponseEntity<Ficha> cadastrarFicha(@RequestBody @Valid CadastrarFichaDTO data, UriComponentsBuilder uriBuilder){
         var newFicha = new Ficha(data);
         Usuario usuario = usuarioService.getById(data.autor().id());
@@ -45,7 +46,7 @@ public class FichaController {
         return ResponseEntity.created(uri).body(savedFicha);
     }
 
-    @GetMapping("/ficha/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<Ficha> getFichaById(@PathVariable Long id){
         var foundFicha = fichaService.getFichaById(id);
         if (foundFicha != null){
@@ -54,10 +55,24 @@ public class FichaController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/ficha/all")
+    @GetMapping()
     public ResponseEntity<List<Ficha>> getAllFichas(){
         List<Ficha> fichas = fichaService.getAll();
         return ResponseEntity.ok(fichas);
     }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Ficha> updateFicha(@RequestBody AtualizarFichaDTO data, @PathVariable Long id){
+        var fichaAutualizada = new Ficha(data);
+        return ResponseEntity.ok(fichaService.update(id, fichaAutualizada));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Ficha> delete(@PathVariable Long id){
+        return ResponseEntity.ok(fichaService.delete(id));
+    }
+
+
+
 
 }
